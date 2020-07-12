@@ -1,0 +1,25 @@
+<div id="app">
+  <v-alert type="info">
+    Sed ut perspiciatis unde omnis iste natus danger sit voluptatem accusantium doloremque laudantium.
+  </v-alert>
+
+  <v-alert type="success">
+    Sed ut perspiciatis unde omnis iste natus danger sit voluptatem accusantium doloremque laudantium.
+  </v-alert>
+
+  <v-alert type="warning">
+    Sed ut perspiciatis unde omnis iste natus danger sit voluptatem accusantium doloremque laudantium.
+  </v-alert>
+
+  <v-alert type="danger">
+    Sed ut perspiciatis unde omnis iste natus danger sit voluptatem accusantium doloremque laudantium.
+  </v-alert>
+</div>
+
+<script>
+  Vue.component('v-alert', require('components/v-alert.vue'));
+
+  new Vue({
+    el: "#app"
+  });
+</script>

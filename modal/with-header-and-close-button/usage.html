@@ -1,0 +1,25 @@
+<div id="app">
+  <button @click="showModal = true">Open Modal</button>
+
+  <v-modal v-if="showModal" title="Confirm Action" width="sm" v-on:close="showModal = false">
+    <p class="text-gray-800">
+      Are you sure you want you delete your account? This action cannot be undone.
+    </p>
+
+    <div class="text-right mt-4">
+      <button @click="showModal = false" class="px-4 py-2 text-sm text-gray-600 hover:underline">Cancel</button>
+      <button class="mr-2 px-4 py-2 text-sm rounded text-white bg-red-500 hover:bg-red-400">Delete</button>
+    </div>
+  </v-modal>
+</div>
+
+<script>
+  Vue.component('v-modal', require('components/v-modal.vue'));
+
+  new Vue({
+    el: "#app",
+    data: {
+      showModal: true,
+    }
+  });
+</script>
