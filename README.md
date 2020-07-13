@@ -15,6 +15,8 @@ Here are a few reasons:
 Just browse components on [VueTailwind](https://vuetailwind.com/) website, and if you see something you like, 
 click on "code" to see the code which you can copy. 
 
+![usage-gif](usage-gif.gif)
+
 Few components require Javascript, in which case you need to have VueJS 2.* installed on your environment.
 
 ## Contribution guide
