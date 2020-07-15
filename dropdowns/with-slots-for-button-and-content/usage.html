@@ -1,0 +1,41 @@
+<div id="app">
+  <v-dropdown placement="right">
+    <!-- Button content -->
+    <template v-slot:button>
+      <img class="w-10 h-10 rounded-full border-2 border-gray-600 mr-3"
+           src="https://raw.githubusercontent.com/vuetailwind/storage/master/avatars/saleh-avatar.jpg"
+           alt="Saleh Mir">
+
+      <span class="mr-2">Saleh</span>
+
+      <svg class="w-4 h-4"
+           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path
+          d="M4.516 7.548c.436-.446 1.043-.481 1.576 0L10 11.295l3.908-3.747c.533-.481 1.141-.446 1.574 0 .436.445.408 1.197 0 1.615-.406.418-4.695 4.502-4.695 4.502a1.095 1.095 0 0 1-1.576 0S4.924 9.581 4.516 9.163c-.409-.418-.436-1.17 0-1.615z"/>
+      </svg>
+    </template>
+
+    <!-- Opened dropdown content -->
+    <template v-slot:content>
+      <a class="flex w-full justify-between items-center rounded px-2 py-1 my-1 hover:bg-indigo-600 hover:text-white"
+         href="#">Profile</a>
+      <a class="flex w-full justify-between items-center rounded px-2 py-1 my-1 hover:bg-indigo-600 hover:text-white"
+         href="#">Settings</a>
+      <a class="flex w-full justify-between items-center rounded px-2 py-1 my-1 hover:bg-indigo-600 hover:text-white"
+         href="#">Help</a>
+
+      <hr>
+
+      <a class="flex w-full justify-between items-center rounded px-2 py-1 my-1 hover:bg-red-600 hover:text-white"
+         href="#">Logout</a>
+    </template>
+  </v-dropdown>
+</div>
+
+<script>
+  Vue.component('v-dropdown', require('components/v-dropdown.vue'));
+
+  new Vue({
+    el: '#app',
+  });
+</script>
