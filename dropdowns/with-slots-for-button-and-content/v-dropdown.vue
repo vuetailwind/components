@@ -8,7 +8,7 @@
     <button class="fixed inset-0 h-full w-full cursor-default focus:outline-none" v-if="open" @click="open = false" tabindex="-1"></button>
 
     <!--dropdown menu-->
-    <div class="absolute shadow-lg border w-48 rounded py-1 px-2 text-sm mt-4 bg-white"
+    <div class="absolute shadow-lg border w-48 rounded py-1 px-2 text-sm mt-4 bg-white z-10"
          :class="placement === 'right' ? 'right-0' : 'left-0'"
          v-if="open">
       <slot name="content"></slot>
