@@ -27,7 +27,7 @@
                     <div class="w-full px-4">
                         <div class="relative">
                             <input v-model="password" class="bg-white text-gray-700 w-full px-1 h-10 rounded-lg focus:outline-none border focus:outline-none focus:ring-4 focus:ring-blue-200 focus:border-transparent mt-2" placeholder="Password" :type="show_password ? 'password': 'text'" required>
-                            <svg v-if="show_password" @click="show_password = true" class="absolute top-0 right-0 w-8 h-8 text-indigo-500 mt-3 mr-1 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg v-if="!show_password" @click="show_password = true" class="absolute top-0 right-0 w-8 h-8 text-indigo-500 mt-3 mr-1 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                             </svg>
@@ -73,7 +73,7 @@
         data() {
             return {
                 reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
-                show_password: true,
+                show_password: false,
                 email: '',
                 password: '',
                 pass_error: 'Please Insert Password',
