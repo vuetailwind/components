@@ -1,0 +1,107 @@
+<div class="w-full text-gray-700">
+    <div class="w-full flex justify-center p-4">
+        <div class="w-full md:w-1/2 border-t-4 border-indigo-500 rounded-b shadow-xl">
+
+            <form method="POST" action="" @submit.prevent="signIn()">
+                <!-- header section -->
+                <div class="w-full bg-gray-100 flex justify-center text-gray-800 font-bold text-xl p-2">Sign In</div>
+
+                <!-- email input -->
+                <label for="email">
+                    <div class="flex justify-start items-center px-4 mt-4">
+                        <span class="text-base font-bold text-gray-600 border-b-2 border-indigo-500 inline-flex px-2">E-mail Address</span>
+                    </div>
+                    <div class="w-full px-4">
+                        <input v-model="email" class="bg-white text-gray-700 w-full px-1 h-10 rounded-lg focus:outline-none border focus:outline-none focus:ring-4 focus:ring-blue-200 focus:border-transparent mt-2" placeholder="E-mail Address" type="text" required>
+                    </div>
+                    <div v-if="email_error" class="w-full flex justify-start pl-4 mt-1 text-red-600 text-xs">
+                        {{ email_error }}
+                    </div>
+                 </label>
+
+                <!-- password input -->
+                <label for="password">
+                    <div class="flex justify-start items-center px-4 mt-4">
+                        <span class="text-base font-bold text-gray-600 border-b-2 border-indigo-500 inline-flex px-2">Password</span>
+                    </div>
+                    <div class="w-full px-4">
+                        <div class="relative">
+                            <input v-model="password" class="bg-white text-gray-700 w-full px-1 h-10 rounded-lg focus:outline-none border focus:outline-none focus:ring-4 focus:ring-blue-200 focus:border-transparent mt-2" placeholder="Password" :type="show_password ? 'password': 'text'" required>
+                            <svg v-if="!show_password" @click="show_password = true" class="absolute top-0 right-0 w-8 h-8 text-indigo-500 mt-3 mr-1 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                            <svg v-else @click="show_password = false" class="absolute top-0 right-0 w-8 h-8 text-indigo-500 mt-3 mr-1 cursor-pointer"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div v-if="pass_error" class="w-full flex justify-start pl-4 mt-1 text-red-600 text-xs">
+                        {{ pass_error }}
+                    </div>
+                </label>
+
+                <!-- remember and forget password -->
+                <div class="flex justify-between items-center px-4 mt-2">
+                    <div>
+                        <label class="inline-flex items-center mt-3">
+                            <input type="checkbox" class="h-5 w-5" checked><span class="ml-1 hover:underline text-sm sm:text-base">Remember Me</span>
+                        </label>
+                    </div>
+                    <div>
+                        <a href="" class="text-blue-600 underline text-sm">Forget Password?</a>
+                    </div>
+                </div>
+
+                <!-- sign in and register link -->
+                <div class="flex justify-between items-center px-4 my-6">
+                    <div>
+                        <button class="bg-blue-600 hover:bg-blue-400 text-white focus:outline-none p-2 rounded-lg shadow-lg">Log In</button>
+                    </div>
+                    <div>
+                        <a href="" class="text-blue-600 underline text-sm">No account? Register now</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    export default {
+
+        data() {
+            return {
+                reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
+                show_password: false,
+                email: '',
+                password: '',
+                pass_error: 'Please Insert Password',
+                email_error: 'Please Insert Email'
+            }
+        },
+        methods: {
+            signIn() {
+                if (this.email.length != 0) {
+                    this.email_error = 'Please Insert Email';
+                }
+
+                if (!this.reg.test(this.email)) {
+                    this.errors.push('Email Format Is Not Valid');
+                }
+
+                if (this.password.length != 0) {
+                    this.pass_error = 'Please Insert Password';
+                }
+
+                if (this.email_error.length == 0 && this.pass_error.length == 0) {
+                    var payload = new FormData();
+                    payload.append('email', this.email);
+                    payload.append('password', this.password);
+
+                    axios.post('/your-signin-api', payload);
+                }
+            }
+        }
+    }
+</script>
